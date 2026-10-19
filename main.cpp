@@ -1,7 +1,17 @@
-#include <iostream>
+#include "jobqueue.h"
 
-#include "src/factorial.hpp"
+int main()
+{
+    JobQueue jq;
+    jq.insert(Job("This JoJ comes first", 5));
+    jq.insert(Job("This JoJ comes third", 3));
+    jq.insert(Job("This JoJ comes fifth", 1));
+    jq.insert(Job("This JoJ comes fourth", 2));
+    jq.insert(Job("This JoJ comes second", 4));
 
-int main() {
-  std::cout << "The factorial of 5 is " << factorial(5) << std::endl;
+    while(!jq.empty())
+    {
+        jq.runHighestPriority();
+        std::cout << "\n";
+    }
 }
